@@ -1,24 +1,39 @@
-# README
+# Rails 5 Starter Pack
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+This repo sets up a basic Rails 5 app using ruby 2.5 which can be run with docker-compose.
 
-* Ruby version
+The starter pack includes:
 
-* System dependencies
+* user auth with [devise](https://github.com/heartcombo/devise)
+* tests with [rspec](https://github.com/rspec/rspec)
+* background job processing with [sidekiq](https://github.com/mperham/sidekiq)
 
-* Configuration
+## Setup
 
-* Database creation
+First build with docker-compose:
 
-* Database initialization
+```
+docker-compose build
+```
 
-* How to run the test suite
+Next, setup the test and dev database:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+docker-compose run web rake db:prepare
+```
 
-* Deployment instructions
+To run the application:
 
-* ...
+```
+docker-compose up
+```
+
+At this point the application will be available at [http://localhost:3000](http://localhost:3000).
+
+To run tests
+
+```
+docker-compose run web rspec
+```
