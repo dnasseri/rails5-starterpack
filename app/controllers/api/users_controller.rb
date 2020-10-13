@@ -1,7 +1,7 @@
 module Api
   class UsersController < ApplicationController
     def show
-      render json: User.find(params[:id])
+      render json: UserSerializer.new(User.find(params[:id])).to_json
     end
 
     def index
