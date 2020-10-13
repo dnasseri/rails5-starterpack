@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+
+  # User authentication routes provided by Devise
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Sidekiq web interface
+  mount Sidekiq::Web => '/sidekiq'
 
   namespace :api do
     resources :users, only: [:index, :show]
